@@ -45,8 +45,6 @@ class Yogaclassessearchnotifier extends  AutoDisposeAsyncNotifier<List<YogaClass
       state = AsyncData([]);
     }
   }
-
-
 }
 
 final YogaclassessearchnotifierProvider = AutoDisposeAsyncNotifierProvider<Yogaclassessearchnotifier, List<YogaClassCombinedviewModel>>(() {

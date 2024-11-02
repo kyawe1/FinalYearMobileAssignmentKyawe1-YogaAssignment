@@ -49,5 +49,5 @@ Future<List<YogaClassCombinedviewModel>> fetchYogaClasses(bool internet, String 
 
 final yogaClassListProvider = FutureProvider.autoDispose<List<YogaClassCombinedviewModel>>((ref) {
   final email = ref.watch(EmailProvider);
-  return fetchYogaClasses(false, email);
+  return fetchYogaClasses(true, email);
 });
