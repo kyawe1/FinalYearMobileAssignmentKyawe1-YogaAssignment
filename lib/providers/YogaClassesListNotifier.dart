@@ -43,7 +43,8 @@ Future<List<YogaClassCombinedviewModel>> fetchYogaClasses(bool internet, String 
       "YogaTitle$index",
       "DayOfWeek$index",
       "TimeOfDay$index",
-      null
+      null,
+    0
   ));
 }
 

@@ -52,7 +52,7 @@ class BookingCardComponent extends StatelessWidget {
                     child: Text((viewModel.TimeOfDay == null?  "-":  viewModel.TimeOfDay!),),)
                 ]),
                 TableRow(children: [
-                  TableCell(child: Text("Time Of Day")),
+                  TableCell(child: Text("Price")),
                   TableCell(
                     child: Text((viewModel.TimeOfDay == null?  "-":  viewModel.TimeOfDay!),),)
                 ]),

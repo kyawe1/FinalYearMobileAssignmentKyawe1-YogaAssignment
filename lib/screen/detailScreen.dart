@@ -91,6 +91,7 @@ class _DetailState extends ConsumerState<DetailScreen> {
                             viewModel.DayOfWeek,
                             viewModel.TimeOfDay,
                             viewModel.isBooked,
+                            viewModel.Price
                           ),
                         );
                         setState(() {
@@ -117,7 +118,8 @@ class _DetailState extends ConsumerState<DetailScreen> {
                               viewModel.YogaTitle,
                               viewModel.DayOfWeek,
                               viewModel.TimeOfDay,
-                              viewModel.isBooked),
+                              viewModel.isBooked,
+                              viewModel.Price),
                         );
                         setState(() {
                           isShopped = true;

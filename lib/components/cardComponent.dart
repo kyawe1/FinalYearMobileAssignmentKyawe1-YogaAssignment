@@ -82,7 +82,7 @@ class _CardState extends ConsumerState<CardComponent> {
                     return IconButton(
                         onPressed: null, icon: Icon(Icons.disabled_by_default));
                   }
-                  if (shoppingCart.any((p)=>  p.yogaClassId == this.widget.viewModel.yogaClassId)) {
+                  else if (shoppingCart.any((p)=>  p.yogaClassId == this.widget.viewModel.yogaClassId)) {
                     return IconButton(
                         onPressed: () => {
                               notifier
