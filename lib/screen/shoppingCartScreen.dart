@@ -7,6 +7,7 @@ import 'package:yoga_assignment1/models/yogaClassModel.dart';
 import 'package:yoga_assignment1/providers/EmailNotifier.dart';
 import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 import 'package:yoga_assignment1/providers/saveBookingNotifier.dart';
+import 'package:yoga_assignment1/styles/TextStyle.dart';
 
 class Shoppingcartscreen extends ConsumerWidget {
   Shoppingcartscreen({super.key});
@@ -21,17 +22,24 @@ class Shoppingcartscreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text("Shopping Cart"),
       ),
-      body: FinalWidget(context, ref, shoppingItems),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        if(email.checkEmail()){
-          ref.watch(BookingSaveNotifierProvider(
-              email: email.getEmail(),
-              YogaClassIds: shoppingItems));
-          shoppingNotifier.reset();
-          return;
-        }
-        alertCheckOut(context,ref,true);
-      },child: Icon(Icons.shopping_cart_checkout_rounded)),
+      body: shoppingItems.length == 0
+          ? Center(
+              child: Text(
+              "Shopping Cart is Empty",
+              style: SecondaryHeaderTextStyles,
+            ),)
+          : FinalWidget(context, ref, shoppingItems),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            if (email.checkEmail()) {
+              ref.watch(BookingSaveNotifierProvider(
+                  email: email.getEmail(), YogaClassIds: shoppingItems));
+              shoppingNotifier.reset();
+              return;
+            }
+            alertCheckOut(context, ref, true);
+          },
+          child: Icon(Icons.shopping_cart_checkout_rounded)),
     );
   }
 
@@ -41,10 +49,7 @@ class Shoppingcartscreen extends ConsumerWidget {
       itemCount: data.length,
       itemBuilder: (context, index) {
         return CardComponent(
-          viewModel: data[index],
-          b: true,
-          i: OrderState.ShoppingCart
-        );
+            viewModel: data[index], b: true, i: OrderState.ShoppingCart);
       },
     );
   }
