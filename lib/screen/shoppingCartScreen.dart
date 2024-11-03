@@ -26,15 +26,19 @@ class Shoppingcartscreen extends ConsumerWidget {
           ? Center(
               child: Text(
               "Shopping Cart is Empty",
-              style: SecondaryHeaderTextStyles,
+              style: SecondaryHeaderTextStyles.copyWith(
+                color: Colors.red
+              ),
             ),)
           : FinalWidget(context, ref, shoppingItems),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             if (email.checkEmail()) {
-              ref.watch(BookingSaveNotifierProvider(
+              var i= ref.watch(BookingSaveNotifierProvider(
                   email: email.getEmail(), YogaClassIds: shoppingItems));
-              shoppingNotifier.reset();
+              if(i.value != null && i.value == true){
+                shoppingNotifier.reset();
+              }
               return;
             }
             alertCheckOut(context, ref, true);

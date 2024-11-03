@@ -19,7 +19,7 @@ class BookingScreen extends ConsumerWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Orders :", style: SecondaryHeaderTextStyles),
+        const Text("Bookings :", style: SecondaryHeaderTextStyles),
         SizedBox.fromSize(
           size: const Size.fromHeight(5),
         ),
@@ -34,9 +34,9 @@ class BookingScreen extends ConsumerWidget {
               },
               error: (error, stackTrace) {
                 if (email != "") {
-                  return Text("Please Check Your Internet");
+                  return Text("Please Check Your Internet",style: SecondaryHeaderTextStyles.copyWith(inherit: true,color: Colors.red));
                 } else {
-                  return Text("Need to Add Email to view Booking View");
+                  return Text("Need to Add Email to view Booking View",style: SecondaryHeaderTextStyles.copyWith(inherit: true,color: Colors.red));
                 }
               },
             )),

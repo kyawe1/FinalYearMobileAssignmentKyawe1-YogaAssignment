@@ -51,7 +51,7 @@ class _DetailState extends ConsumerState<DetailScreen> {
                 : FinalWidget(context, ref, data!, value),
             error: (exception, stackTrace) {
               print(Exception);
-              return Text("Something Wrong");
+              return Text("Something Wrong", style: SecondaryHeaderTextStyles.copyWith(inherit:  true, color: Colors.red));
             }),
       ),
     );

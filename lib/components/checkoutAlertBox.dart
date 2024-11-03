@@ -9,7 +9,7 @@ Future<void> alertCheckOut(
     BuildContext context, WidgetRef ref, bool saveable) async {
   final shoppingCart = ref.read(ShoppingCartProvider.notifier);
   final email = ref.read(EmailProvider.notifier);
-  var controller = TextEditingController();
+  final controller = TextEditingController();
   return showDialog<void>(
       context: context,
       builder: (context) {
@@ -17,8 +17,14 @@ Future<void> alertCheckOut(
             title: Text("Order the Yoga Classes"),
             content: TextField(
               controller: controller,
-              decoration:
-                  const InputDecoration(labelText: "Email", hintText: "Email"),
+              decoration: InputDecoration(
+                  labelText: "Email",
+                  hintText: "Email",
+                  errorText: (controller.text == "" ||
+                          controller.text.isEmpty == true ||
+                          controller.text.trim() == "")
+                      ? "Email is Required"
+                      : ""),
             ),
             actions: [
               TextButton(
@@ -26,19 +32,32 @@ Future<void> alertCheckOut(
                   child: const Text("Cancel")),
               TextButton(
                   onPressed: () {
+                    if (controller.text == "" || controller.text.isEmpty == true || controller.text.trim() == ""){
+                      return;
+                    }
                     email.setEmail(controller.text);
                     if (saveable) {
-                      ref.watch(
+                      var i =ref.watch(
                         BookingSaveNotifierProvider(
                           email: controller.text,
                           YogaClassIds: shoppingCart.getList(),
                         ),
                       );
-                      shoppingCart.reset();
+                      if(i.value == true && i.value !=null){
+                        shoppingCart.reset();
+                      }
                     }
                     Navigator.pop(context);
                   },
                   child: const Text("Ok")),
             ]);
       });
+}
+
+bool checkRequired(String Email) {
+  if (Email == "" || Email.isEmpty == true || Email.trim() == "") {
+    return true;
+  } else {
+    return false;
+  }
 }
