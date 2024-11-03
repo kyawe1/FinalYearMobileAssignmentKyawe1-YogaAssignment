@@ -10,6 +10,7 @@ import 'package:yoga_assignment1/screen/searchScreen.dart';
 import 'package:yoga_assignment1/screen/shoppingCartScreen.dart';
 import 'package:yoga_assignment1/styles/TextStyle.dart';
 
+// Main Page of the screen.
 class MainScreen extends ConsumerWidget {
   const MainScreen({super.key});
 
@@ -48,6 +49,7 @@ final bodies = [
   BookingScreen(),
 ];
 
+// navigater and appbar main screen for main Screen
 class _MainHomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -72,7 +74,7 @@ class _MainHomeScreen extends ConsumerWidget {
                 },
               ),
               IconButton(
-                icon: email == "" || email.trim() == "" ? Icon(Icons.verified_outlined) : Icon(Icons.verified),
+                icon: email == "" || email.trim() == "" ? Icon(Icons.verified_outlined) : Icon(Icons.verified,color:Theme.of(context).primaryColor),
                 onPressed: ()  {
                   if(email == "" || email.trim() == ""){
                     alertCheckOut(context, ref,false);

@@ -7,7 +7,7 @@ import 'package:yoga_assignment1/providers/EmailNotifier.dart';
 import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 
 
-
+// YogaClassList view api call handler
 Future<List<YogaClassCombinedviewModel>> fetchYogaClasses(bool internet, String email) async {
   if (internet) {
     late Uri uri;

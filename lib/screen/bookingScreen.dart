@@ -6,6 +6,7 @@ import 'package:yoga_assignment1/providers/EmailNotifier.dart';
 import 'package:yoga_assignment1/providers/YogaBookingListNotifier.dart';
 import 'package:yoga_assignment1/styles/TextStyle.dart';
 
+// booking Screen code.
 class BookingScreen extends ConsumerWidget {
   BookingScreen({super.key});
 

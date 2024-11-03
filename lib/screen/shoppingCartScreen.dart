@@ -8,7 +8,7 @@ import 'package:yoga_assignment1/providers/EmailNotifier.dart';
 import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 import 'package:yoga_assignment1/providers/saveBookingNotifier.dart';
 import 'package:yoga_assignment1/styles/TextStyle.dart';
-
+// shopping Cart screen statelesswidget.
 class Shoppingcartscreen extends ConsumerWidget {
   Shoppingcartscreen({super.key});
 
@@ -25,20 +25,16 @@ class Shoppingcartscreen extends ConsumerWidget {
       body: shoppingItems.length == 0
           ? Center(
               child: Text(
-              "Shopping Cart is Empty",
-              style: SecondaryHeaderTextStyles.copyWith(
-                color: Colors.red
+                "Shopping Cart is Empty",
+                style: SecondaryHeaderTextStyles.copyWith(color: Colors.red),
               ),
-            ),)
+            )
           : FinalWidget(context, ref, shoppingItems),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
+          onPressed: () async {
             if (email.checkEmail()) {
-              var i= ref.watch(BookingSaveNotifierProvider(
+              var i = ref.watch(BookingSaveNotifierProvider(
                   email: email.getEmail(), YogaClassIds: shoppingItems));
-              if(i.value != null && i.value == true){
-                shoppingNotifier.reset();
-              }
               return;
             }
             alertCheckOut(context, ref, true);

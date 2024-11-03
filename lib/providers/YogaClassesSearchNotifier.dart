@@ -5,14 +5,15 @@ import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:yoga_assignment1/models/yogaClassModel.dart';
 
+// State handler for YogaSearch Notifier .dart
 class Yogaclassessearchnotifier extends  AutoDisposeAsyncNotifier<List<YogaClassCombinedviewModel>>{
   Yogaclassessearchnotifier();
-
+  // seed the state
   @override
   List<YogaClassCombinedviewModel> build(){
     return [];
   }
-
+  // get the data from api
   void YogaClassSearchList({required String teacherName,required String DayOfWeek, required DateTime TimeOfDay , required String email}) async{
     late Uri uri ;
 

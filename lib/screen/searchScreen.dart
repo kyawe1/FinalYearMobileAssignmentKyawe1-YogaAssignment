@@ -7,7 +7,7 @@ import 'package:yoga_assignment1/providers/EmailNotifier.dart';
 import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 import 'package:yoga_assignment1/providers/YogaClassesSearchNotifier.dart';
 import 'package:yoga_assignment1/styles/TextStyle.dart';
-
+// Search Screen Stateful widget.
 class SearchScreen extends ConsumerStatefulWidget {
   SearchScreen({super.key});
 
@@ -27,7 +27,7 @@ class SearchScreen extends ConsumerStatefulWidget {
     return _SearchState();
   }
 }
-
+// search State for Search Screen
 class _SearchState extends ConsumerState<SearchScreen> {
   String teacherName = "";
   String DayOfWeek = "";

@@ -6,6 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:yoga_assignment1/models/BookingModel.dart';
 import 'package:yoga_assignment1/providers/EmailNotifier.dart';
 
+// YogaClassapi handler for YogaClassList View
 Future<List<BookingModel>> fetchYogaClasses(bool internet, String email) async {
   if (internet) {
     late Uri uri;

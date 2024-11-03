@@ -7,6 +7,7 @@ import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 import 'package:yoga_assignment1/providers/YogaClassDetailNotifier.dart';
 import 'package:yoga_assignment1/styles/TextStyle.dart';
 
+//statefulWidget for Detail Screen
 class DetailScreen extends ConsumerStatefulWidget {
   String YogaClassId;
 
@@ -16,6 +17,7 @@ class DetailScreen extends ConsumerStatefulWidget {
   ConsumerState createState() => _DetailState();
 }
 
+// local state for detail screen
 class _DetailState extends ConsumerState<DetailScreen> {
   bool isShopped = false;
 

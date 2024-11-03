@@ -4,11 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:yoga_assignment1/models/yogaClassModel.dart';
+import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 
 part 'saveBookingNotifier.g.dart';
 
+// save booking call to the api to save.
 @riverpod
 Future<bool> BookingSaveNotifier(Ref ref,{required String email,required List<YogaClassCombinedviewModel> YogaClassIds}) async{
+  final shoppingNotifier = ref.read(ShoppingCartProvider.notifier);
   Uri uri = Uri.http("192.168.1.35:8080", "/api/book/save");
   var response = await http.post(
     uri,
@@ -19,12 +22,7 @@ Future<bool> BookingSaveNotifier(Ref ref,{required String email,required List<Yo
     }),
   );
   if (response.statusCode == 200) {
-    var jsonResponse =
-    convert.jsonDecode(response.body) as Map<String, dynamic>;
-    List<YogaClassCombinedviewModel> list = jsonResponse['model']
-        .map<YogaClassCombinedviewModel>(
-            (e) => YogaClassCombinedviewModel.toModel(e))
-        .toList();
+    shoppingNotifier.reset();
     return true;
   } else {
     print('Request failed with status: ${response.statusCode}.');

@@ -1,3 +1,4 @@
+// api response object
 class YogaClassCombinedviewModel {
   String yogaClassId;
   String Date;
@@ -9,11 +10,29 @@ class YogaClassCombinedviewModel {
   double Price;
   bool? isBooked = false;
 
-  YogaClassCombinedviewModel(this.yogaClassId, this.Date, this.TeacherName,
-      this.YogaId, this.YogaTitle, this.DayOfWeek, this.TimeOfDay,this.isBooked,this.Price);
+  YogaClassCombinedviewModel(
+      this.yogaClassId,
+      this.Date,
+      this.TeacherName,
+      this.YogaId,
+      this.YogaTitle,
+      this.DayOfWeek,
+      this.TimeOfDay,
+      this.isBooked,
+      this.Price);
 
+  // mapper to object from json
   static YogaClassCombinedviewModel toModel(Map<String, dynamic> map) {
-    return YogaClassCombinedviewModel(map["Id"], map["Date"], map["TeacherName"], map["YogaId"], map["YogaTitle"], map["DayOfWeek"], map["TimeOfDay"],map['IsBooked'],map["Price"]);
+    return YogaClassCombinedviewModel(
+      map["Id"],
+      map["Date"],
+      map["TeacherName"],
+      map["YogaId"],
+      map["YogaTitle"],
+      map["DayOfWeek"],
+      map["TimeOfDay"],
+      map['IsBooked'],
+      map["Price"],
+    );
   }
-
 }

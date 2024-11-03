@@ -1,3 +1,4 @@
+// api response object
 class YogaClassDetailModel {
   String yogaClassId;
   String Date;
@@ -33,6 +34,7 @@ class YogaClassDetailModel {
       this.TypeOfClass,
       this.Duration);
 
+  // mapper to object from json
   static YogaClassDetailModel toModel(Map<String, dynamic> map) {
     return YogaClassDetailModel(
         map["yogaClass"]["Id"],
@@ -49,7 +51,6 @@ class YogaClassDetailModel {
         map['yogaCourse']['Price'],
         map['yogaCourse']['Level'],
         map['yogaCourse']['TypeOfClass'],
-        map['yogaCourse']['Duration']
-    );
+        map['yogaCourse']['Duration']);
   }
 }

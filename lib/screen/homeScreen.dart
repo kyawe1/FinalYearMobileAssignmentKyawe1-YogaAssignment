@@ -7,6 +7,7 @@ import 'package:yoga_assignment1/providers/ShoppingCartNotifier.dart';
 import 'package:yoga_assignment1/providers/YogaClassesListNotifier.dart';
 import 'package:yoga_assignment1/styles/TextStyle.dart';
 
+// HomeScreen Statelesswidget with providers.
 class HomeScreen extends ConsumerWidget {
   HomeScreen({super.key});
 
