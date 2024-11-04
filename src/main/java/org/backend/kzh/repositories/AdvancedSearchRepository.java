@@ -27,11 +27,13 @@ public class AdvancedSearchRepository {
 	public List<YogaClasses> searchYogaClasses(YogaClassFindRequest request) {
 		if (!request.isEmpty()) {
 			StringBuilder builder = new StringBuilder();
+			request.teacherName +="%";
 			builder.append(
 					" select yoga_classes.* from yoga_classes join yogas on yogas.id = yoga_classes.yoga_id where 1=1 ");
 
 			if (!request.teacherName.isEmpty() && !request.teacherName.isBlank()) {
-				builder.append(" and teacher_name = :teacherName ");
+				
+				builder.append(" and teacher_name like :teacherName ");
 			}
 
 			else if (!request.dayOfWeek.isEmpty() && !request.dayOfWeek.isBlank()) {

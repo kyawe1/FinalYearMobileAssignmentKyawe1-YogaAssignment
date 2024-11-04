@@ -52,6 +52,10 @@ public class YogaClassesController {
 		return ResponseEntity.ok(abl.getList(request,email));
 	}
 	
+	@PostMapping("find")
+	public ResponseEntity<ResponseModel<List<YogaClassesListDAO>>> index(@RequestBody YogaClassFindRequest request) {
+		return ResponseEntity.ok(abl.getList(request,null));
+	}
 	@PostMapping("")
 	public ResponseEntity<ResponseModel<String>> insert(@RequestBody YogaClassesCreateDAO dao){
 		return ResponseEntity.ok(temp.insert(dao));
