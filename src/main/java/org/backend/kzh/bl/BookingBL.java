@@ -50,15 +50,20 @@ public class BookingBL implements IBaseBL<BookingDAO,  BookingListDAO,BookingLis
 		ResponseModel<String> result = new ResponseModel<>();
 		try {
 			var i = repository1.findAll();
+			var booking= repository.getByEmail(model.email);
 			var email = model.email;
 			List<Booking> models= model.YogaClassIds.stream().map((k)->{
 				var yogaClass= i.stream().filter((m) -> m.getId().equals(k)).findFirst().get();
-				Booking bok = new Booking();
-				bok.setEmail(email);
-				bok.setId("bok_"+UUID.randomUUID().toString());
-				bok.setYoga_class_id(yogaClass);
-				return bok;
-			}).collect(Collectors.toList());
+				var ab = booking.stream().filter((m) -> m.getYoga_class_id().getId().equals(k)).findFirst();
+				if(ab.isEmpty()) {
+					Booking bok = new Booking();
+					bok.setEmail(email);
+					bok.setId("bok_"+UUID.randomUUID().toString());
+					bok.setYoga_class_id(yogaClass);
+					return bok;
+				}
+				return null;
+			}).filter(p -> p != null).collect(Collectors.toList());
 			repository.saveAll(models);
 			result.model = null;
 			result.status = "200";
