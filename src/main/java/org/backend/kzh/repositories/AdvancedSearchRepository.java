@@ -36,11 +36,11 @@ public class AdvancedSearchRepository {
 				builder.append(" and teacher_name like :teacherName ");
 			}
 
-			else if (!request.dayOfWeek.isEmpty() && !request.dayOfWeek.isBlank()) {
+			if (!request.dayOfWeek.isEmpty() && !request.dayOfWeek.isBlank()) {
 				builder.append(" and day_of_week = :dow ");
 			}
 
-			else if (!request.timeOfDay.isEmpty() && !request.timeOfDay.isBlank()) {
+			if (!request.timeOfDay.isEmpty() && !request.timeOfDay.isBlank()) {
 
 				builder.append(" and time_of_course = :tod ");
 			}
@@ -51,11 +51,11 @@ public class AdvancedSearchRepository {
 				query.setParameter("teacherName", request.teacherName);
 			}
 
-			else if (!request.dayOfWeek.isEmpty() && !request.dayOfWeek.isBlank()) {
+			if (!request.dayOfWeek.isEmpty() && !request.dayOfWeek.isBlank()) {
 				query.setParameter("dow", request.dayOfWeek);
 			}
 
-			else if (!request.timeOfDay.isEmpty() && !request.timeOfDay.isBlank()) {
+			if (!request.timeOfDay.isEmpty() && !request.timeOfDay.isBlank()) {
 				var time = LocalDateTime.parse(request.timeOfDay);
 				var localDateFormat = DateTimeFormatter.ofPattern("HH:mm");
 				var timeString = localDateFormat.format(time);

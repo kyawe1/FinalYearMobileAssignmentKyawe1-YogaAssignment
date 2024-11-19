@@ -43,6 +43,8 @@ public class SyncDbRepository {
 			var result1 = query2.executeUpdate();
 
 			var result2 = query1.executeUpdate();
+			
+			manager.flush();
 
 			if (result1 >= 0 && result2 >= 0 && result3 >= 0) {
 				var courses = dto.yogaCourseCreateUpdateDAOs.stream()
@@ -70,10 +72,12 @@ public class SyncDbRepository {
 					})
 					.collect(Collectors.toList());
 
-				repo2.saveAllAndFlush(courses);
-				repo1.saveAllAndFlush(classes);
-				repo3.saveAllAndFlush(bookings);
-
+				repo2.saveAll(courses);
+				repo1.saveAll(classes);
+				repo3.saveAll(bookings);
+				repo2.flush();
+				repo1.flush();
+				repo3.flush();
 			}
 			s.model = "Synced with db successfully";
 			s.message = "Sync with db successfully";
