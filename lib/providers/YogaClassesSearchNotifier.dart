@@ -14,7 +14,7 @@ class Yogaclassessearchnotifier extends  AutoDisposeAsyncNotifier<List<YogaClass
     return [];
   }
   // get the data from api
-  void YogaClassSearchList({required String teacherName,required String DayOfWeek, required DateTime TimeOfDay , required String email}) async{
+  void YogaClassSearchList({required String teacherName,required String DayOfWeek, required DateTime? TimeOfDay , required String email}) async{
     late Uri uri ;
 
     if(email != ""){
@@ -30,7 +30,7 @@ class Yogaclassessearchnotifier extends  AutoDisposeAsyncNotifier<List<YogaClass
       body: convert.jsonEncode(<String, dynamic>{
         "teacherName": teacherName,
         "dayOfWeek": DayOfWeek,
-        "timeOfDay": TimeOfDay.toIso8601String()
+        "timeOfDay": TimeOfDay == null ? "" : TimeOfDay.toIso8601String()
       }),
     );
     if (response.statusCode == 200) {

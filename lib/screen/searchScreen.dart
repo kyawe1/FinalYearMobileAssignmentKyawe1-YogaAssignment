@@ -17,9 +17,9 @@ class SearchScreen extends ConsumerStatefulWidget {
     "Tuesday",
     "Friday",
     "Wednesday",
-    "Thrusday",
-    "saturaday",
-    "sunday",
+    "Thursday",
+    "Saturday",
+    "Sunday",
   ];
 
   @override
@@ -31,7 +31,7 @@ class SearchScreen extends ConsumerStatefulWidget {
 class _SearchState extends ConsumerState<SearchScreen> {
   String teacherName = "";
   String DayOfWeek = "";
-  DateTime timeOfDay = DateTime.now();
+  DateTime? timeOfDay;
   bool visible = false;
   final textController = TextEditingController();
 
